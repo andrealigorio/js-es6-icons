@@ -110,12 +110,7 @@ Partendo dalla struttura dati che troviamo sotto, mostriamo in pagina tutte le i
 	
 	const color = ["blue", "orange", "purple"];
 	
-	const iconsType = [];
-	icons.forEach((element) => {
-		if (!iconsType.includes(element.type)) {
-			iconsType.push(element.type);
-		}
-	});
+	const iconsType = getIconsType(icons);
 	console.log(iconsType);
 	
 	const iconsColored = icons.map((element) => {
@@ -128,6 +123,13 @@ Partendo dalla struttura dati che troviamo sotto, mostriamo in pagina tutte le i
 	console.log(iconsColored);
 
 	printIcons(iconsColored, iconsContainer);
+	
+	/* Milestone 3
+	Creiamo una select con i tipi di icone e usiamola per filtrare le icone */
+
+	const selectContainer = $('#type');
+
+	printSelect(iconsType, selectContainer);
 });
 
 /* FUNZIONI */
@@ -144,5 +146,22 @@ function printIcons(array, container) {
 			<i class="${family} ${prefix}${name}" style="color: ${color}"></i>
 			<div class="icons_title" style="color: ${color}">${name}</div>
 		</div>`);
+	});
+}
+
+function getIconsType(array) {
+	const iconsType = [];
+	array.forEach((element) => {
+		if (!iconsType.includes(element.type)) {
+			iconsType.push(element.type);
+		}
+	});
+	return iconsType;
+}
+
+function printSelect(array, container) {
+	array.forEach((element) => {
+		
+		container.append(`<option value="${element}">${element}</option>`);
 	});
 }

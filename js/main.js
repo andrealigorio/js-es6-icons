@@ -130,6 +130,8 @@ Partendo dalla struttura dati che troviamo sotto, mostriamo in pagina tutte le i
 	const selectContainer = $('#type');
 
 	printSelect(iconsType, selectContainer);
+
+	changeOption(iconsColored, selectContainer, iconsContainer);
 });
 
 /* FUNZIONI */
@@ -142,9 +144,9 @@ function printIcons(array, container) {
 		const { name, prefix, family, color } = element;
 
 		container.append(`
-		<div>
+		<div class="icons_box">
 			<i class="${family} ${prefix}${name}" style="color: ${color}"></i>
-			<div class="icons_title" style="color: ${color}">${name}</div>
+			<div class="icons_title">${name}</div>
 		</div>`);
 	});
 }
@@ -163,5 +165,19 @@ function printSelect(array, container) {
 	array.forEach((element) => {
 		
 		container.append(`<option value="${element}">${element}</option>`);
+	});
+}
+
+function changeOption(array, container, iconsContainer) {
+	container.change(function() {
+		const selected = $(this).val();
+		const filtered = array.filter((element) => {
+			return element.type == selected; 
+		});
+		if (filtered.length == 0) {
+			printIcons(array, iconsContainer);
+		} else {
+			printIcons(filtered, iconsContainer);
+		}
 	});
 }

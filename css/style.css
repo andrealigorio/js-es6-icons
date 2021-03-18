@@ -3,12 +3,81 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #dddddd;
+}
+.header_top {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+}
+.logo_text {
+    font-size: 40px;
+    font-weight: bold;
+    color: #29b1dd;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.header_bottom {
+    width: 100%;
+    height: 50px;
+    background-color: #29b1dd;
+}
+.choise {
+    text-align: center;
+    line-height: 50px;
+}
+.choise label {
+    color: white;
+}
+.choise select {
+    cursor: pointer;
+    border-radius: 5px;
+}
+.choise select:focus {
+    background-color: #b2eaef;
+}
+select option {
+    text-transform: capitalize;
+}
 
 .wrapper {
     width: 100%;
-    height: 100vh;
 }
-
 .icons_title {
     text-transform: uppercase;
+}
+.icons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.icons_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    width: calc(100% / 5 - 40px);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 20px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.icons i {
+    font-size: 40px;
+}
+
+@media screen and (max-width: 1115px) {
+    .icons_box {
+        width: calc(100% / 3 - 40px);
+    }
+}
+@media screen and (max-width: 570px) {
+    .icons_box {
+        width: calc(100% / 2 - 40px);
+    }
 }
